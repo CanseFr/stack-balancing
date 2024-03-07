@@ -10,7 +10,7 @@ services:
     depends_on:
       - db-proxy
     ports:
-      - '80:80' # Port HTTP
+      - '82:80' # Port HTTP
       - '81:81' # Interface d'administration NPM
     environment:
       DB_MYSQL_HOST: db-proxy
@@ -22,7 +22,7 @@ services:
       #DISABLE_IPV6: 'true' # A activer pour certains conteneurs
     volumes:
       - proxy-data:/data
-      #- proxy-letsencrypt:/etc/letsencrypt
+      - proxy-letsencrypt:/etc/letsencrypt
 
   db-proxy:
     image: 'jc21/mariadb-aria'

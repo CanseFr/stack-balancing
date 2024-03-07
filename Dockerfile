@@ -1,4 +1,13 @@
-FROM ubuntu:latest
-LABEL authors="canse"
+FROM node:18
 
-ENTRYPOINT ["top", "-b"]
+WORKDIR /app/nest
+
+COPY package*.json ./
+
+RUN npm install
+
+COPY . .
+
+RUN npm run build
+
+CMD [ "npm", "run", "start:dev" ]
