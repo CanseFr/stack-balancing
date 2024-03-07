@@ -112,7 +112,7 @@ docker-compose up
 ```
 Puis consulter l'url :
 
-```djangourlpath
+```url
 http://localhost:81/login
 ```
 
@@ -133,19 +133,19 @@ ipconfig (Windows : Recuperer adresse ip Eth0)
 ifconfig (Linux : Recuperer adresse ip en0)
 ```
 
-Ensuite je vais preciser dans forward hostname ip le nom de domaine interne de l'ap *flask-app* precisé dans le fichier *docker-compose.yaml*.
+Ensuite je vais preciser dans forward hostname ip le nom de domaine interne de l'ap *nestjs-app* precisé dans le fichier *docker-compose.yaml*.
 
 ```yaml
 services:
-  flask-app:
+  nestjs-app:
     build: . # Chemin vers le rÃ©pertoire contenant le Dockerfile de Flask
 ```
 
-Puis precisr le port que l'on a inscrit precedement dans le Dockerfile.
+Puis precisr le port de NestJs que l'on a inscrit precedement dans le Dockerfile.
 
 ```yaml
 # Expose le port sur lequel l'application s'exécutera
-EXPOSE 5000
+EXPOSE 3000
 ```
 
 ![img.png](assets/img.png)
@@ -164,7 +164,7 @@ Maintenant nous allons ouvrir un nouveau terminal puis executer la commande suiv
 docker-compose up -d --scale flask-app=3
 ```
 
-Trois nouvelles instance vont etre crée, vous pouvez ocnstater le resultat en regardant l'interface de docker ou en utilisant le terminal.
+Trois nouvelles instance vont etre crée, vous pouvez constater le resultat en regardant l'interface de docker ou en utilisant le terminal.
 
 
 
