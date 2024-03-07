@@ -12,6 +12,7 @@ services:
     ports:
       - '82:80' # Port HTTP
       - '81:81' # Interface d'administration NPM
+#      - '443:443'
     environment:
       DB_MYSQL_HOST: db-proxy
       DB_MYSQL_PORT: 3306
