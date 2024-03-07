@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  nestjs-app:
+    build: . # Chemin vers le rÃ©pertoire contenant le Dockerfile de nestjs
+
+  nginx-proxy-manager:
+    image: 'jc21/nginx-proxy-manager'
+    restart: unless-stopped
+    depends_on:
+      - db-proxy
+    ports:
+      - '80:80' # Port HTTP
+      - '81:81' # Interface d'administration NPM
+    environment:
+      DB_MYSQL_HOST: db-proxy
+      DB_MYSQL_PORT: 3306
+      DB_MYSQL_USER: ${MYSQL_USER}
+      DB_MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      DB_MYSQL_NAME: ${MYSQL_DATABASE}
+      DISABLE_HTTPS: 'true' # A desactiver en production
+      #DISABLE_IPV6: 'true' # A activer pour certains conteneurs
+    volumes:
+      - proxy-data:/data
+      #- proxy-letsencrypt:/etc/letsencrypt
+
+  db-proxy:
+    image: 'jc21/mariadb-aria'
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    volumes:
+      - db-proxy-data:/var/lib/mysql
+
+volumes:
+  proxy-data:
+  proxy-letsencrypt:
+  db-proxy-data:
