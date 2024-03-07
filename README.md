@@ -161,7 +161,7 @@ Puis aller dans un navigateur puis consulter l'adresse ip inscrit preceddement.
 Maintenant nous allons ouvrir un nouveau terminal puis executer la commande suivante :
 
 ```zsh
-docker-compose up -d --scale flask-app=3
+docker-compose up -d --scale nestjs-app=3
 ```
 
 Trois nouvelles instance vont etre crée, vous pouvez constater le resultat en regardant l'interface de docker ou en utilisant le terminal.
