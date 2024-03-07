@@ -1,6 +1,6 @@
 ## Scalling horizontal
 
-Nous allons ici mettre en place un reverse proxy tres simpel a l'aide de Nginx Proxy Manager pour deployer des container de type NestJs(Typescript).
+Nous allons ici mettre en place un reverse proxy tres simple a l'aide de Nginx Proxy Manager pour deployer des container de type NestJs(Typescript).
 
 ## Introduction
 
@@ -166,10 +166,3 @@ docker-compose up -d --scale nestjs-app=3
 
 Trois nouvelles instance vont etre crée, vous pouvez constater le resultat en regardant l'interface de docker ou en utilisant le terminal.
 
-
-
-
-
-
-
-# Flask-Reverse-Proxy
